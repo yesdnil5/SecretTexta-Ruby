@@ -3,6 +3,13 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		render text: params[:session].inspect
+		@session = Session.new(session_params)
+		@session.save
+		redirect_to @session
 	end
+	
+	private
+		def session_params
+			params.requires(:session).permit(:title, :text)
+		end
 end

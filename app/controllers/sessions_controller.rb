@@ -8,8 +8,12 @@ class SessionsController < ApplicationController
 		redirect_to @session
 	end
 	
+	def show
+		@session = Session.find(params[:id])
+	end
+
 	private
 		def session_params
-			params.requires(:session).permit(:title, :text)
+			params.require(:session).permit(:title, :text)
 		end
 end

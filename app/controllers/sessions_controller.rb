@@ -12,6 +12,10 @@ class SessionsController < ApplicationController
 		@session = Session.find(params[:id])
 	end
 
+	def index
+		@sessions = Session.all
+	end
+
 	private
 		def session_params
 			params.require(:session).permit(:title, :text)
